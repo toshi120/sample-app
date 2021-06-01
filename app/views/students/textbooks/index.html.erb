@@ -14,7 +14,7 @@
     <% @students_textbooks.each do |students_textbook| %>
       <tr>
         <td><%= students_textbook.name %></td>
-        <td><%= link_to 'Show', students_textbook %></td>
+        <td><%= link_to 'Show', [:students, students_textbook] %></td>
       </tr>
     <% end %>
   </tbody>

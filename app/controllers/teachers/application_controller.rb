@@ -1,4 +1,4 @@
 class Teachers::ApplicationController < ApplicationController
-  layout 'teacher/application'
+  layout 'teachers/application'
   before_action :authenticate_teacher!
 end

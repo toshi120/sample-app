@@ -22,10 +22,10 @@ class Teachers::TextbooksController < Teachers::ApplicationController
   # POST /teachers/textbooks or /teachers/textbooks.json
   def create
     @teachers_textbook = Textbook.new(teachers_textbook_params)
-
+    # binding.pry
     respond_to do |format|
       if @teachers_textbook.save
-        format.html { redirect_to @teachers_textbook, notice: "Textbook was successfully created." }
+        format.html { redirect_to [:teachers,@teachers_textbook], notice: "Textbook was successfully created." }
         format.json { render :show, status: :created, location: @teachers_textbook }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class Teachers::TextbooksController < Teachers::ApplicationController
   def update
     respond_to do |format|
       if @teachers_textbook.update(teachers_textbook_params)
-        format.html { redirect_to @teachers_textbook, notice: "Textbook was successfully updated." }
+        format.html { redirect_to [:teachers,@teachers_textbook], notice: "Textbook was successfully updated." }
         format.json { render :show, status: :ok, location: @teachers_textbook }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,6 +64,6 @@ class Teachers::TextbooksController < Teachers::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def teachers_textbook_params
-      params.fetch(:teachers_textbook, {})
+      params.require(:textbook).permit(:name)
     end
 end

@@ -11,7 +11,7 @@
 
   <body>
     <% if student_signed_in? %>
-      <%= "お疲れ様です！ #{current_student.name} さん"%>
+      <%= "お疲れ様です！ #{current_student.email} さん"%>
       <%= link_to 'SignOut', destroy_student_session_path, method: :delete %>
     <% else %>
       <%= link_to 'SignUp', new_student_registration_path %>
