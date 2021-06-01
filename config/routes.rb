@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :students, controllers: {
+    sessions:      'students/sessions',
+    passwords:     'students/passwords',
+    registrations: 'students/registrations'
+  }
+  devise_for :teachers, controllers: {
+    sessions:      'teachers/sessions',
+    passwords:     'teachers/passwords',
+    registrations: 'teachers/registrations'
+  }
+  root to: 'home#index'
 end
