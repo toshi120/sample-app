@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SampleApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if teacher_signed_in? %>
+      <%= "お疲れ様です！ #{current_teacher.email} 先生"%>
+      <%= link_to 'SignOut', destroy_teacher_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'SignUp', new_teacher_registration_path %>
+      <%= link_to 'Sigin', new_teacher_session_path %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

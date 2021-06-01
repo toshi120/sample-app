@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SampleApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if student_signed_in? %>
+      <%= "お疲れ様です！ #{current_student.email} さん"%>
+      <%= link_to 'SignOut', destroy_student_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'SignUp', new_student_registration_path %>
+      <%= link_to 'Signin', new_student_session_path %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

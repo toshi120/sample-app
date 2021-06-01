@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :teachers do
+    resources :textbooks
+  end
+
+  namespace :students do
+    resources :textbooks
+  end
+
   devise_for :students, controllers: {
     sessions:      'students/sessions',
     passwords:     'students/passwords',
